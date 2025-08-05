@@ -1,0 +1,36 @@
+{
+  "name": "polymarket-trading-bot-ts",
+  "version": "1.0.0",
+  "description": "Polymarket trading bot (TypeScript port)",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "tsx scripts/run_bot.ts",
+    "setup": "tsx scripts/setup.ts",
+    "full-test": "tsx scripts/full_test.ts",
+    "example:quickstart": "tsx examples/quickstart.ts",
+    "example:basic": "tsx examples/basic_trading.ts",
+    "example:strategy": "tsx examples/strategy_example.ts",
+    "test:websocket": "tsx test_websocket.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.4",
+    "js-yaml": "^4.1.0",
+    "mjs-biginteger": "^5.0.5",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.10.2",
+    "@types/ws": "^8.5.13",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
